@@ -1,0 +1,27 @@
+<div class="text-left ml-3 <%= (likes.count > 0)? "mt-1 p-1": "" %>">
+<% likes.each.with_index do |like, index| %> 
+  <% if likes.size == 1%>
+    <strong><%=  link_to like.account.full_name, account_path(like.account) %> </strong>
+  <% elsif like == likes.last %>
+    and
+    <strong><%= link_to like.account.full_name, account_path(like.account)%></strong>
+  <% elsif index > 1%>
+    and 
+    <button type="button" class="btn btn-primary other-likes" data-toggle="modal" data-target="#exampleModalCenter-<%=likes[0].id%>">   
+    <strong> <%= (likes.size-index).to_s %> others </strong>
+    </button>
+    <%= render 'posts/list_likes', {likes: likes}%>
+    
+    <%break%>
+  <% elsif index==likes.size-2 || index == 1%>
+    <strong> <%=  link_to like.account.full_name, account_path(like.account)%> </strong>
+  <% else %>
+    <strong> <%=  link_to like.account.full_name, account_path(like.account) %> </strong>,
+  <% end %> 
+  
+<%end %>
+<% if likes.count>0%>
+liked this
+<% end %>
+</div>
+

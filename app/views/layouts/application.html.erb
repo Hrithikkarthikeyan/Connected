@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Connected</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= render "layouts/navigation"%>
+    <div class="container mt-5" style="margin-top: 50px;">
+    <br/><br/>
+      <%= render "layouts/messages" %>
+      <%= yield %>
+    </div>
+  </body>
+</html>
